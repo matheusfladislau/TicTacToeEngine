@@ -1,8 +1,8 @@
-public class Program {
+public class ConsoleGame {
     public static void Main(string[] args) {
         Abertura();
 
-        TicTacToeGame tic = new TicTacToeGame();
+        TicTacToeEngine tic = new TicTacToeEngine();
         string jogarNovamente = "S";
 
         while (jogarNovamente.Equals("S")) {
@@ -78,7 +78,7 @@ public class Program {
         return number;
     }
 
-    private static void EscolherNumeroDisponivel(TicTacToeGame tic) {
+    private static void EscolherNumeroDisponivel(TicTacToeEngine tic) {
         Console.WriteLine("Escolha um número disponível.");
 
         bool icExiste = tic.SubstituteFieldMatrix(LerNumero());

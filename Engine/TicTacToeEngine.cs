@@ -1,4 +1,4 @@
-﻿public sealed class TicTacToeGame { 
+﻿public sealed class TicTacToeEngine { 
     private string? _playerOneSymbol { get; set; }
     private string? _playerTwoSymbol { get; set; }
     private bool _draw { get; set; }

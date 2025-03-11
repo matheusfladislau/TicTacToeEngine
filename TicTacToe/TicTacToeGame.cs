@@ -1,6 +1,4 @@
 ﻿public sealed class TicTacToeGame { 
-    public TicTacToeGame() { }
-
     private string? _playerOneSymbol { get; set; }
     private string? _playerTwoSymbol { get; set; }
     private bool _draw { get; set; }
@@ -67,7 +65,7 @@
     }
     
     private bool Won() {
-        string? curPlayerChar = (_currentPlayerOne) ? _playerOneSymbol! : _playerTwoSymbol!;
+        string? curPlayerChar = GetCurrentPlayerSymbol();
 
         for (int i = 0; i < 3; i++) {
             if (matrix[i, 0] == curPlayerChar &&
@@ -137,7 +135,7 @@
     }
 
     private void PutCharInMatrix(int i, int j) {
-        matrix[i, j] = (_currentPlayerOne) ? _playerOneSymbol! : _playerTwoSymbol!;
+        matrix[i, j] = GetCurrentPlayerSymbol();
     }
     
     public void Restart() {

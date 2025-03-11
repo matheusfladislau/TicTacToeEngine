@@ -4,9 +4,9 @@
     private bool _draw { get; set; }
     private bool _playerOneWon { get; set; }
     private bool _currentPlayerOne { get; set; } = true;
+    private bool _isEnded { get; set; }
+    private string[,] _matrix { get; set; } = new string[3,3];
 
-    public bool isEnded { get; private set; }
-    public string[,] matrix { get; private set; } = new string[3,3];
 
     public void setPlayer1(string player1) {
         if (!string.IsNullOrEmpty(_playerTwoSymbol) && player1.Equals(_playerTwoSymbol)) {
@@ -31,7 +31,8 @@
         this._playerTwoSymbol = player2;
     }
 
-    public bool Ended() => this.isEnded;
+    public bool Ended() => this._isEnded;
+    public string[,] GetCurrentMatrix() => this._matrix;
 
     public string Result() {
         if (!Ended()) {
@@ -54,7 +55,7 @@
 
     public void NextRound() {
         if (Won() || Draw()) {
-            this.isEnded = true;
+            this._isEnded = true;
             this._playerOneWon = this._currentPlayerOne;
         };
         this._currentPlayerOne = !this._currentPlayerOne;
@@ -68,28 +69,28 @@
         string? curPlayerChar = GetCurrentPlayerSymbol();
 
         for (int i = 0; i < 3; i++) {
-            if (matrix[i, 0] == curPlayerChar &&
-                    matrix[i, 1] == curPlayerChar &&
-                    matrix[i, 2] == curPlayerChar) {
+            if (_matrix[i, 0] == curPlayerChar &&
+                    _matrix[i, 1] == curPlayerChar &&
+                    _matrix[i, 2] == curPlayerChar) {
                 return true;
             }
 
-            if (matrix[0, i] == curPlayerChar &&
-                    matrix[1, i] == curPlayerChar &&
-                    matrix[2, i] == curPlayerChar) {
+            if (_matrix[0, i] == curPlayerChar &&
+                    _matrix[1, i] == curPlayerChar &&
+                    _matrix[2, i] == curPlayerChar) {
                 return true;
             }
         }
 
-        if (matrix[0, 0] == curPlayerChar &&
-                matrix[1, 1] == curPlayerChar &&
-                matrix[2, 2] == curPlayerChar) {
+        if (_matrix[0, 0] == curPlayerChar &&
+                _matrix[1, 1] == curPlayerChar &&
+                _matrix[2, 2] == curPlayerChar) {
             return true;
         }
 
-        if (matrix[2, 0] == curPlayerChar &&
-                matrix[1, 1] == curPlayerChar &&
-                matrix[0, 2] == curPlayerChar) {
+        if (_matrix[2, 0] == curPlayerChar &&
+                _matrix[1, 1] == curPlayerChar &&
+                _matrix[0, 2] == curPlayerChar) {
             return true;
         }
 
@@ -99,7 +100,7 @@
     private bool Draw() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (matrix[i,j] != "X" && matrix[i,j] != "O") {
+                if (_matrix[i,j] != "X" && _matrix[i,j] != "O") {
                     return false;
                 }
             }
@@ -111,9 +112,9 @@
     private void PopulateMatrix() {
         int sum = 0;
         for (int i = 0; i < 3; i++) {
-            matrix[i, 0] = (sum + i + 1).ToString();
-            matrix[i, 1] = (sum + i + 2).ToString();
-            matrix[i, 2] = (sum + i + 3).ToString();
+            _matrix[i, 0] = (sum + i + 1).ToString();
+            _matrix[i, 1] = (sum + i + 2).ToString();
+            _matrix[i, 2] = (sum + i + 3).ToString();
             sum += 2;
         }
     }
@@ -125,7 +126,7 @@
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (matrix[i,j].Equals(number.ToString())) {
+                if (_matrix[i,j].Equals(number.ToString())) {
                     PutCharInMatrix(i, j);
                     return true;
                 }
@@ -135,7 +136,7 @@
     }
 
     private void PutCharInMatrix(int i, int j) {
-        matrix[i, j] = GetCurrentPlayerSymbol();
+        _matrix[i, j] = GetCurrentPlayerSymbol();
     }
     
     public void Restart() {
@@ -144,6 +145,6 @@
         this._draw = false;
         this._playerOneWon = false;
         this._currentPlayerOne = true;
-        this.isEnded = false;
+        this._isEnded = false;
     }
 }

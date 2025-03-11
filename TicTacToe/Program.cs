@@ -13,12 +13,14 @@ public class Program {
 
             while (!tic.Ended()) {
                 Console.Clear();
-                PrintarMatriz(tic.matrix);
+                PrintarMatriz(tic.GetCurrentMatrix());
 
                 Console.WriteLine("Vez do jogador do símbolo {0}!", tic.GetCurrentPlayerSymbol()); 
                 EscolherNumeroDisponivel(tic);
                 tic.NextRound();
             }
+            Console.Clear();
+            PrintarMatriz(tic.GetCurrentMatrix());
             Console.WriteLine($"Resultado: {tic.Result()}");
 
             Console.WriteLine($"Quer jogar novamente? (S/N)");
@@ -61,7 +63,7 @@ public class Program {
                     matrix[i, 1], 
                     matrix[i, 2]);
             if (i < 2) {
-                Console.WriteLine("=====");
+                Console.WriteLine("-+-+-");
             }
         }
     }

@@ -8,27 +8,27 @@
     private string[,] _matrix { get; set; } = new string[3,3];
 
 
-    public void setPlayer1(string player1) {
-        if (!string.IsNullOrEmpty(_playerTwoSymbol) && player1.Equals(_playerTwoSymbol)) {
+    public void SetPlayerOne(string playerOneSymbol) {
+        if (!string.IsNullOrEmpty(_playerTwoSymbol) && playerOneSymbol.Equals(_playerTwoSymbol)) {
             throw new ArgumentException("Both players can't use the same character!");
         }
 
-        if (!player1.Equals("X") && !player1.Equals("O")) {
+        if (!playerOneSymbol.Equals("X") && !playerOneSymbol.Equals("O")) {
             throw new ArgumentException("Player needs to be either X or O!");
         }
-        this._playerOneSymbol = player1;
+        this._playerOneSymbol = playerOneSymbol;
     }
 
-    public void setPlayer2(string player2) {
-        if (!string.IsNullOrEmpty(_playerOneSymbol) && player2.Equals(_playerTwoSymbol)) {
+    public void SetPlayerTwo(string playerTwoSymbol) {
+        if (!string.IsNullOrEmpty(_playerOneSymbol) && playerTwoSymbol.Equals(_playerOneSymbol)) {
             throw new ArgumentException("Both players can't use the same character!");
         }
 
-        if (!player2.Equals("X") && !player2.Equals("O")) {
+        if (!playerTwoSymbol.Equals("X") && !playerTwoSymbol.Equals("O")) {
             throw new ArgumentException("Player needs to be either X or O!");
         }
 
-        this._playerTwoSymbol = player2;
+        this._playerTwoSymbol = playerTwoSymbol;
     }
 
     public bool Ended() => this._isEnded;
@@ -62,11 +62,11 @@
     }
 
     public string GetCurrentPlayerSymbol() {
-        return _currentPlayerOne ? _playerOneSymbol! : _playerTwoSymbol!;
+        return this._currentPlayerOne ? this._playerOneSymbol! : this._playerTwoSymbol!;
     }
     
     private bool Won() {
-        string? curPlayerChar = GetCurrentPlayerSymbol();
+        string curPlayerChar = GetCurrentPlayerSymbol();
 
         for (int i = 0; i < 3; i++) {
             if (_matrix[i, 0] == curPlayerChar &&
@@ -100,7 +100,7 @@
     private bool Draw() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (_matrix[i,j] != "X" && _matrix[i,j] != "O") {
+                if (!_matrix[i,j].Equals("X") && !_matrix[i,j].Equals("O")) {
                     return false;
                 }
             }

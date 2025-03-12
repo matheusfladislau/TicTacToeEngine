@@ -1,14 +1,14 @@
-public class Program {
+public class ConsoleGame {
     public static void Main(string[] args) {
         Abertura();
 
-        TicTacToeGame tic = new TicTacToeGame();
+        TicTacToeEngine tic = new TicTacToeEngine();
         string jogarNovamente = "S";
 
         while (jogarNovamente.Equals("S")) {
             EscolherSimbolo(out string p1, out string p2);
-            tic.setPlayer1(p1);
-            tic.setPlayer2(p2);
+            tic.SetPlayerOne(p1);
+            tic.SetPlayerTwo(p2);
             tic.Start();
 
             while (!tic.Ended()) {
@@ -25,7 +25,7 @@ public class Program {
 
             Console.WriteLine($"Quer jogar novamente? (S/N)");
             jogarNovamente = Console.ReadLine()!;
-            while (jogarNovamente != "S" && jogarNovamente != "N") {
+            while (!jogarNovamente.Equals("S") && !jogarNovamente.Equals("N")) {
                 Console.WriteLine("Apenas (S/N)!");
                 jogarNovamente = Console.ReadLine()!;
             }
@@ -46,7 +46,7 @@ public class Program {
         Console.WriteLine("Jogador 1: X ou O?");
         p1 = Console.ReadLine()!;
 
-        while (p1 != "X" && p1 != "O") {
+        while (!p1.Equals("X") && !p1.Equals("O")) {
             Console.WriteLine("Escreva X ou O");
             p1 = Console.ReadLine()!;
         }
@@ -78,7 +78,7 @@ public class Program {
         return number;
     }
 
-    private static void EscolherNumeroDisponivel(TicTacToeGame tic) {
+    private static void EscolherNumeroDisponivel(TicTacToeEngine tic) {
         Console.WriteLine("Escolha um número disponível.");
 
         bool icExiste = tic.SubstituteFieldMatrix(LerNumero());

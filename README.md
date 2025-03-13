@@ -58,7 +58,7 @@ Players alternate turns, selecting an available spot marked by a number.
 ![illustration](https://github.com/matheusfladislau/TicTacToeEngine/blob/main/excalidraw/tictactoe_example.png)
 
 
-This engine abstracts the core game mechanics, allowing you to use them without worrying about implementation. For examples, check the `ConsoleGame` and `WinFormsGame` projects, which demonstrate different platform implementations using the same engine.
+The engine abstracts the core game mechanics, allowing you to use them without worrying about how implement their logic. For examples, check the `ConsoleGame` and `WinFormsGame` projects, which demonstrate different platform implementations using the same engine.
 
 | Method | Parameter | Returns | Description |
 | --- | --- | --- | --- |
@@ -78,8 +78,8 @@ Here’s how you can get started:
 
 - Browse open issues. You can also suggest your own ideas or enhancements.
 
-- Fork the TicTacToeEngine repository to your GitHub account and clone it to your local machine.
+- Fork this repository to your GitHub account and clone it to your local machine.
 
 - Create a new branch for each issue or feature you’re working on to keep changes isolated and make reviewing easier.
 
-- Submit a pull request to the main TicTacToeEngine repository. Provide a clear description of what your PR addresses, including relevant context or testing steps.
+- Submit a pull request to the main repository. Provide a clear description of what your PR addresses, including relevant context or testing steps.

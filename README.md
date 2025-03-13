@@ -19,7 +19,7 @@ TicTacToeEngine is a free software:
 
 ## Installation
 
-This project was developed using .NET 8.0. For Windows, use Visual Studio 2022 or install via the [Microsoft website](https://dotnet.microsoft.com/pt-br/download/dotnet/8.0). On Linux, I recommend the [asdf](https://asdf-vm.com/guide/getting-started.html) package for a simple setup. Verify installation with ```dotnet --version.```
+This project was developed using .NET 8.0. For Windows, use Visual Studio 2022 or install via the [Microsoft website](https://dotnet.microsoft.com/pt-br/download/dotnet/8.0). On Linux, we recommend the [asdf](https://asdf-vm.com/guide/getting-started.html) package for a simple setup. Verify installation with ```dotnet --version.```
 
 - Clone the engine locally:
 ```bash
